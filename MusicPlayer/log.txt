@@ -1,0 +1,18 @@
+
+
+
+-- To Do: 
+
+Before a gui, need to figure out how to pause, skip, etc. 
+
+So something about signals to do playback? idk 
+
+I am storing songs in doubly linked lists. Maybe then put it to a hashtable, 
+the key being the playlist and the value being the head of the linked list...
+
+Also would like to keep the players in a serperate players folder, so need to adjust the 
+make file and such. 
+
+
+
+
