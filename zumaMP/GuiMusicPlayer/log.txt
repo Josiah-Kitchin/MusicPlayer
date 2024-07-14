@@ -1,0 +1,17 @@
+
+
+--To Do: 
+
+The repeat button doesnt work if its just one song, for it gets the 
+next song node while the song is playing i think, so it wouldnt be able to tell if you 
+set repeat already. i think. look into it more
+
+
+Getting the album cover seems tough, the lib chatgpt reccomands is in c++
+figure out a way in c, try to use c++, or dont add it at all. it would be cool 
+
+
+also, need to see if i could start the file chooser in the music directory 
+
+
+

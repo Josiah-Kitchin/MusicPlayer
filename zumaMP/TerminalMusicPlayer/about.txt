@@ -1,0 +1,14 @@
+
+
+
+-- Simple terminal music player
+
+Looks inside your music directory. 
+You can then choose to play a playlist (a sub directory of the music folder). 
+
+Features include: 
+pause, play, skip, previous, quit. 
+
+Mp3 files are supported, wav files can be played however playback features will not work. 
+
+Used to build the GuiMusicPlayer 
