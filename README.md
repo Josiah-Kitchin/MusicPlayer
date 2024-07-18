@@ -1,2 +1,2 @@
 # MusicPlayer
-Desktop music player written in c. 
+idk what im doing 
