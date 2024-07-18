@@ -1,0 +1,22 @@
+
+TO DO: 
+
+
+
+//Okay, its working okay
+
+
+Now, it crashes when pressed really fast for a long time. 
+
+Maybe i should implement a mutex, idk if i need it or not. 
+
+I want to make it where you can go to the previous song if the playlist ends 
+
+overall, should try to clean up the code a bit before moving foward
+
+
+then, i want to implement the feature to choose a song
+
+also, if the directory is empty, need to make a case for that 
+
+maybe also make the skip update the song if it is paused? 
