@@ -29,8 +29,7 @@ SongInfo getSongInfo(const string audioFilePath) {
     TagLib::MPEG::File file(audioFilePath.c_str()); 
     TagLib::ID3v2::Tag* tag = file.ID3v2Tag();
     if (!tag) {
-        cerr << "No ID3v2 tag found in the file." << endl;
-	SongInfo emptySongInfo("Unknown", "", "", "", -1);  
+	SongInfo emptySongInfo("", "", "", "", -1);  
 	return emptySongInfo;  
     }
 
