@@ -1,4 +1,3 @@
 # MusicPlayer
-idk what im doing , this is a work in progress
-
-Music player for downloaded audio files
+Music player for donwloaded audio files
+Uses MVC architecture
