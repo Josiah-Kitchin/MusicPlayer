@@ -2,7 +2,7 @@
 /*
  * The controller in MVC architecture
  * Sets the signals of all gui buttons to methods of the SongQueue class (model) and sends the 
- * approiate event to the PlayerView class. 
+ * appropiate event to the PlayerView class. 
  *
  * The controller also manages the audioThread, which plays concurrently with the gui
  * as soon as a playlist is chosen. 
