@@ -1,0 +1,63 @@
+
+
+* {
+    border: none; 
+}
+
+window { 
+    background-color: #11111b;
+}
+
+#topGrid { 
+    border-color: black; 
+}
+
+.songSelectButton {
+    color: white;
+    border-radius: 0px;
+    padding: 4px;
+    border: none;
+    background-color: #11111b; 
+    
+}
+
+.songSelectButton:hover {
+    background-color: #a6adc8;
+    color: black; 
+}
+
+.playbackButton { 
+    background-color: #181825;
+    border: 1px solid black; 
+}
+
+.playbackButton:hover { 
+    background-color: #a6adc8;
+    color: black; 
+}
+
+#songList{ 
+    background-color:#11111b; 
+}
+
+
+#scrollSong{ 
+    outline: none; 
+}
+
+#title { 
+    color: #f38ba8;
+}
+
+.info { 
+    color: #fab387;
+    font-style: italic;
+}
+
+
+#aboutButton:hover { 
+    background-color: #a6adc8; 
+}
+
+
+

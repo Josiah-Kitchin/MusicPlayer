@@ -1,0 +1,130 @@
+
+/*
+ * The view in MVC architecture
+ * PlayerView holds the gui componenets from the builder file. It responds to events
+ * and changes the gui accordingly.
+ */
+
+#include "headers/view.hpp" 
+#include "headers/events.hpp" 
+#include "headers/song_queue.hpp"
+#include <string> 
+#include <gtkmm.h> 
+#include <iostream> 
+
+using namespace std; 
+
+PlayerView::PlayerView(const string builderPath) { 
+    // get all the widgets that need signals or need to be changed dynamically here 
+    auto builder = Gtk::Builder::create(); 
+    builder->add_from_file(builderPath); 
+    builder->get_widget("mainWindow", mainWindow); 
+
+    builder->get_widget("pauseButton", pauseButton); 
+    builder->get_widget("nextButton", nextButton); 
+    builder->get_widget("previousButton", previousButton); 
+    builder->get_widget("repeatButton", repeatButton); 
+    builder->get_widget("shuffleButton", shuffleButton); 
+    builder->get_widget("playlistChooser", playlistChooser); 
+
+    builder->get_widget("title", titleLabel); 
+    builder->get_widget("artist", artistLabel); 
+    builder->get_widget("album", albumLabel); 
+    builder->get_widget("year", yearLabel); builder->get_widget("albumCover", albumCover); 
+
+
+    //default image
+    auto noAlbumCover = Gdk::Pixbuf::create_from_file("../src/images/noAlbumCover.png");
+    noAlbumCover = noAlbumCover->scale_simple(180, 180, Gdk::INTERP_BILINEAR);
+    albumCover->set(noAlbumCover); 
+
+    //About image 
+
+
+    builder->get_widget("scrolledSongSelect", scrolledSongSelect); 
+    builder->get_widget("songViewport", songViewport); 
+    builder->get_widget("songList", songList); 
+
+
+    //CSS 
+    auto css = Gtk::CssProvider::create(); 
+    auto cssFile = Gio::File::create_for_path("../src/gui/style.css");
+
+    css->load_from_file(cssFile);
+
+    Gtk::StyleContext::add_provider_for_screen(
+	Gdk::Screen::get_default(),
+	css,
+	GTK_STYLE_PROVIDER_PRIORITY_APPLICATION
+    );
+
+}
+
+void PlayerView::togglePause(PlayerEvent event) { if (event == PlayerEvent::playSong) { 
+	pauseButton->set_image_from_icon_name("media-playback-pause"); 
+	pauseButton->set_label("Pause"); 
+    } else if (event == PlayerEvent::pauseSong) { 
+	pauseButton->set_image_from_icon_name("media-playback-start"); 
+	pauseButton->set_label("Play"); 
+    } else { 
+	cerr << "Invalid PlayerEvent in togglePause" << endl; 
+    }
+}
+
+void PlayerView::toggleRepeat(PlayerEvent event) { 
+    if (event == PlayerEvent::repeatEnabled) { 
+	repeatButton->set_label("Disable Repeat"); 
+    } else if (event == PlayerEvent::repeatDisabled) { 
+	repeatButton->set_label("Enable Repeat"); 
+    } else { 
+	cerr << "Invalid PlayerEvent in toggleRepeat" << endl; 
+    }
+}
+
+void PlayerView::toggleShuffle(PlayerEvent event) { 
+    if (event == PlayerEvent::shuffleEnabled) { 
+	shuffleButton->set_label("Disable Shuffle"); 
+    } else if (event == PlayerEvent::shuffleDisabled) { 
+	shuffleButton->set_label("Enable Shuffle"); 
+    } else { 
+	cerr << "Invalid PlayerEvent in toggleShuffle" << endl; 
+    }
+}
+
+void PlayerView::updateSongInfo(SongInfo songInfo) { 
+    titleLabel->set_text(songInfo.title); 
+    artistLabel->set_text(songInfo.artist); 
+    albumLabel->set_text(songInfo.album); 
+    if (songInfo.year <= 0) { 
+	yearLabel->set_text(""); 
+    } else { 
+	yearLabel->set_text(to_string(songInfo.year)); 
+    }
+    if (songInfo.hasCover) {
+	songInfo.cover = songInfo.cover->scale_simple(180, 180, Gdk::INTERP_BILINEAR); // set the size
+	albumCover->set(songInfo.cover); 
+    } else { 
+	auto noAlbumCover = Gdk::Pixbuf::create_from_file("../src/images/noAlbumCover.png");
+	noAlbumCover = noAlbumCover->scale_simple(180, 180, Gdk::INTERP_BILINEAR);
+	albumCover->set(noAlbumCover); 
+    }
+}
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					       
+
